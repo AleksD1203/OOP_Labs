@@ -59,14 +59,11 @@ class MyTable:
         self._tree.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
         scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
         
-        # БОНУС 1: Callback для виділення
         self._tree.bind('<<TreeviewSelect>>', self._on_select)
         
-        # Кнопка для бонусу 2 (видалення)
         button_frame = ttk.Frame(self._window)
         button_frame.pack(fill=tk.X, padx=5, pady=5)
         
-        # БОНУС 2: Кнопка видалення
         ttk.Button(button_frame, text="Видалити виділений", 
                   command=self._on_delete).pack(side=tk.LEFT, padx=5)
     
@@ -105,7 +102,6 @@ class MyTable:
                 selection = self._tree.selection()
                 if selection:
                     index = self._tree.index(selection[0])
-                    # Виклик callback БЕЗ прапора delete
                     self._selection_callback(index)
             except tk.TclError:
                 pass
@@ -118,8 +114,6 @@ class MyTable:
                 selection = self._tree.selection()
                 if selection:
                     index = self._tree.index(selection[0])
-                    # ВИПРАВЛЕННЯ: спочатку запитуємо підтвердження, потім видаляємо
-                    # Передаємо індекс у callback, але НЕ видаляємо з таблиці тут
                     self._selection_callback(index, delete=True)
             except tk.TclError:
                 pass
