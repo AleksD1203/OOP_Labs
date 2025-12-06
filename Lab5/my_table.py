@@ -95,7 +95,7 @@ class MyTable:
         self._shapes_buffer.clear()
     
     def _on_select(self, event):
-        """БОНУС 1: Обробник виділення рядка"""
+        """Обробник виділення рядка"""
         if (self._selection_callback and self._tree and 
             self._window and self._window.winfo_exists()):
             try:
@@ -107,7 +107,7 @@ class MyTable:
                 pass
     
     def _on_delete(self):
-        """БОНУС 2: Обробник видалення виділеного рядка"""
+        """Обробник видалення виділеного рядка"""
         if (self._selection_callback and self._tree and 
             self._window and self._window.winfo_exists()):
             try:
